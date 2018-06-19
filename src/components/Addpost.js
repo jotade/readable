@@ -75,7 +75,7 @@ class AddPost extends Component {
 
   delete() {
     this.props.deletePost(this.state)
-    this.props.history.push("/")
+    this.props.history.go(-2)
   }
 
   render() {

@@ -17,6 +17,7 @@ class AddComment extends Component {
     this.close = this.close.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.delete = this.delete.bind(this)
   }
 
   componentDidMount() {
@@ -44,6 +45,11 @@ class AddComment extends Component {
     } else {
       return false
     }
+  }
+
+  delete() {
+    this.props.deleteComment(this.state)
+    this.close()
   }
 
   handleSubmit(event) {
@@ -81,6 +87,9 @@ class AddComment extends Component {
     <div className="modal">
       <div className="modal-main">
         <button className="modal-close" onClick={this.close}>close</button>
+        { isEditing &&
+        <button type="button" onClick={this.delete} className="delete-comment">Delete</button>
+        }
         <h2>{ !isEditing ? "Add Comment to Post" : "Edit comment of Post"}</h2>
         <form onSubmit={this.handleSubmit}>
           <textarea className="comment-textarea" placeholder="Add your comment here" value={ body } name='body' onChange={this.handleChange}/>

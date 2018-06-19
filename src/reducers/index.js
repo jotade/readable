@@ -55,10 +55,12 @@ function blog (state = blogInitialState, action) {
       }
     case EDIT_POST :
       return {
+        ...state,
         posts: [...state.posts.filter((post) => post.id !== action.post.id ), action.post]
       }
     case DELETE_POST :
       return {
+        ...state,
         posts: [...state.posts.filter((post) => post.id !== action.post.id )]
       }
     case SORT_TYPE :

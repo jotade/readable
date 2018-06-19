@@ -85,9 +85,7 @@ export const editComment = (comment) => async dispatch => {
   dispatch({type: EDIT_COMMENT, comment: res.data})
 }
 
-export function deleteComment ({ id }) {
-  return {
-    type: DELETE_COMMENT,
-    id,
-  }
+export const deleteComment = (comment) => async dispatch => {
+  const res = await axios.delete(`${api}/comments/${comment.id}`, headers)
+  dispatch({type: DELETE_COMMENT, comment: res.data})
 }
