@@ -25,6 +25,11 @@
     background-color: #111;
 }
 
+.sort-title {
+  color: white;
+  margin: 5px;
+}
+
 .active {
     background-color: #297682;
 }
@@ -75,7 +80,7 @@
 .add-post-input-wrapper {
   flex: 1;
 }
-.add-post-bar input, textarea, select {
+.add-post-bar input, textarea {
   width: 100%;
   padding: 15px 10px;
   margin-top: 10px;

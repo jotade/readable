@@ -46,6 +46,7 @@ class Header extends Component {
               </Link></li>
             )}
             <li>
+              <div className="sort-title">Sort by: </div>
               <select value={this.state.sort} onChange={this.handleSelect.bind(this)}>
                 <option value="Timestamp">Timestamp</option>
                 <option value="Vote Score">Vote Score</option>
