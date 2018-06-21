@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
+import Post from './Post'
 
 class Posts extends Component {
 
@@ -53,16 +54,7 @@ class Posts extends Component {
           <h1>{category !== undefined ? category.toUpperCase()+" POSTS":"POSTS"}</h1>
             <ol className="posts-container">
                 { posts !== undefined ? posts.map( post =>
-                  <li key={post.id}>
-                    <Link to={{pathname: "/posts/"+post.id, state: post} }>
-                      <div className="post-title">{ post.title }</div>
-                      <div className="post-body">{ post.body }</div>
-                      <div className="post-vote">{"Score: "+post.voteScore }</div>
-                      <div className="post-comment">{"Comments: "+post.commentCount }</div>
-                    </Link>
-                    <button className="upVote" onClick={() => this.props.votePost(post.id, {option: "upVote"})}>upVote</button>
-                    <button className="downVote" onClick={() => this.props.votePost(post.id, {option: "downVote"})}>downVote</button>
-                  </li>
+                  <Post post={ post } key={ post.id } />
                 )
                 : <h1>No Posts available</h1>}
             </ol>

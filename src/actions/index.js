@@ -1,19 +1,20 @@
 import axios from 'axios'
-
-export const RECEIVE_CATEGORIES = 'RECEIVE_CATEGORIES'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const RECEIVE_POST = 'RECEIVE_POST'
-export const ADD_POST = 'ADD_POST'
-export const VOTE_POST = 'VOTE_POST'
-export const EDIT_POST = 'EDIT_POST'
-export const DELETE_POST = 'DELETE_POST'
-export const ADD_COMMENT = 'ADD_COMMENT'
-export const VOTE_COMMENT = 'VOTE_COMMENT'
-export const EDIT_COMMENT = 'EDIT_COMMENT'
-export const DELETE_COMMENT = 'DELETE_COMMENT'
-export const SORT_TYPE = 'SORT_TYPE'
-export const CATEGORY = 'CATEGORY'
-export const POST_COMMENTS = 'POST_COMMENTS'
+import {
+  RECEIVE_CATEGORIES,
+  RECEIVE_POSTS,
+  RECEIVE_POST,
+  ADD_POST,
+  VOTE_POST,
+  EDIT_POST,
+  DELETE_POST,
+  ADD_COMMENT,
+  VOTE_COMMENT,
+  EDIT_COMMENT,
+  DELETE_COMMENT,
+  SORT_TYPE,
+  CATEGORY,
+  POST_COMMENTS,
+} from '../actions/types'
 
 const api = `http://localhost:3001`
 const headers = { headers: { 'Authorization': 'whatever-you-want' }}
@@ -72,7 +73,8 @@ export const voteComment = (id, vote) => async dispatch => {
 }
 
 export const editPost = (post) => async dispatch => {
-  await axios.put(`${api}/posts/${post.id}`, post, headers)
+  const res = await axios.put(`${api}/posts/${post.id}`, post, headers)
+  dispatch({type: EDIT_POST, post: res.data})
 }
 
 export const deletePost = (post) => async dispatch => {

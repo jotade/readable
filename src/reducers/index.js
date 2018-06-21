@@ -14,7 +14,7 @@ import {
   SORT_TYPE,
   CATEGORY,
   POST_COMMENTS,
-} from '../actions'
+} from '../actions/types'
 
 const blogInitialState = {
   categories: [],
@@ -56,11 +56,13 @@ function blog (state = blogInitialState, action) {
     case EDIT_POST :
       return {
         ...state,
+        post: action.post,
         posts: [...state.posts.filter((post) => post.id !== action.post.id ), action.post]
       }
     case DELETE_POST :
       return {
         ...state,
+        post: {},
         posts: [...state.posts.filter((post) => post.id !== action.post.id )]
       }
     case SORT_TYPE :

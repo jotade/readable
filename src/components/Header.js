@@ -39,7 +39,7 @@ class Header extends Component {
             >ALL</Link></li>
             {categories && categories.map( category => <li key={ category.path} >
               <Link
-              to={"/"+category.name+"/posts"}
+              to={"/"+category.name}
               className={this.state.category === category.name ? "active" : {}}
               onClick={this.handleClick.bind(this, category.name) }
               >{category.name.toUpperCase()}
